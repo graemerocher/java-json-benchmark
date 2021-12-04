@@ -29,6 +29,7 @@ public enum Library {
     MOSHI,
     TAPESTRY,
     JSONITER,
+    MICRONAUT,
     MINIMALJSON,
     MJSON,
     UNDERSCORE_JAVA,

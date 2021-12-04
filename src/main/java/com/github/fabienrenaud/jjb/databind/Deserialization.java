@@ -5,6 +5,7 @@ import com.bluelinelabs.logansquare.LoganSquare;
 import com.github.fabienrenaud.jjb.JsonBench;
 import com.github.fabienrenaud.jjb.data.JsonSource;
 import com.google.gson.JsonSyntaxException;
+import io.micronaut.core.type.Argument;
 import org.openjdk.jmh.annotations.Benchmark;
 
 import java.io.IOException;
@@ -103,6 +104,12 @@ public class Deserialization extends JsonBench {
     @Override
     public Object jodd() throws Exception {
         return JSON_SOURCE().provider().joddDeser().parse(JSON_SOURCE().nextString(), JSON_SOURCE().pojoType());
+    }
+
+    @Benchmark
+    @Override
+    public Object micronaut() throws Exception {
+        return JSON_SOURCE().provider().micronaut().readValue(JSON_SOURCE().nextByteArray(), Argument.of(JSON_SOURCE().pojoType()));
     }
 
     @Benchmark

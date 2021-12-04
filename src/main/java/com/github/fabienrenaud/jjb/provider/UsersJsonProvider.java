@@ -15,6 +15,8 @@ import com.squareup.moshi.Moshi;
 
 import flexjson.JSONDeserializer;
 import flexjson.JSONSerializer;
+import io.micronaut.context.ApplicationContext;
+import io.micronaut.serde.config.annotation.SerdeConfig;
 import org.apache.johnzon.core.JsonProviderImpl;
 import org.apache.johnzon.mapper.Mapper;
 import org.eclipse.yasson.JsonBindingProvider;
@@ -31,6 +33,14 @@ import javax.json.bind.Jsonb;
 public class UsersJsonProvider implements JsonProvider<Users> {
 
     private final Gson gson = new Gson();
+    private final io.micronaut.serde.ObjectMapper objectMapper = ApplicationContext
+            .builder()
+            .properties(Collections.singletonMap(
+                "micronaut.serde.serialization.inclusion", SerdeConfig.SerInclude.ALWAYS
+            ))
+            .deduceEnvironment(false)
+            .start()
+            .getBean(io.micronaut.serde.ObjectMapper.class);
     private final javax.json.stream.JsonGeneratorFactory javaxJsonFactory = javax.json.Json.createGeneratorFactory(null);
     private final ObjectMapper jackson = new ObjectMapper();
     private final ObjectMapper jacksonAfterburner = new ObjectMapper();
@@ -143,6 +153,11 @@ public class UsersJsonProvider implements JsonProvider<Users> {
     @Override
     public jodd.json.JsonSerializer joddSer() {
         return JODD_SER.get();
+    }
+
+    @Override
+    public io.micronaut.serde.ObjectMapper micronaut() {
+        return objectMapper;
     }
 
     @Override

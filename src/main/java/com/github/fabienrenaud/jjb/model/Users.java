@@ -4,6 +4,8 @@ import com.bluelinelabs.logansquare.annotation.JsonField;
 import com.bluelinelabs.logansquare.annotation.JsonObject;
 import com.dslplatform.json.CompiledJson;
 import com.dslplatform.json.JsonAttribute;
+import io.micronaut.core.annotation.Introspected;
+import io.micronaut.serde.annotation.Serdeable;
 
 import java.util.List;
 import java.util.Objects;
@@ -14,6 +16,8 @@ import java.util.Objects;
 @JsonObject
 @CompiledJson
 @jodd.json.meta.JSON
+@Serdeable
+@Introspected(accessKind = Introspected.AccessKind.FIELD)
 public class Users {
 
     @JsonField
@@ -42,6 +46,8 @@ public class Users {
 
     @JsonObject
     @CompiledJson
+    @Serdeable
+    @Introspected(accessKind = Introspected.AccessKind.FIELD)
     public static final class User {
 
         @JsonField
@@ -139,6 +145,8 @@ public class Users {
 
     @JsonObject
     @CompiledJson
+    @Serdeable
+    @Introspected(accessKind = Introspected.AccessKind.FIELD)
     public static final class Friend {
 
         @JsonField

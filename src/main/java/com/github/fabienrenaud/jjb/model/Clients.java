@@ -6,10 +6,14 @@ import com.bluelinelabs.logansquare.typeconverters.DoubleBasedTypeConverter;
 import com.bluelinelabs.logansquare.typeconverters.StringBasedTypeConverter;
 import com.dslplatform.json.CompiledJson;
 import com.dslplatform.json.JsonAttribute;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import io.micronaut.core.annotation.Introspected;
+import io.micronaut.serde.annotation.Serdeable;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -18,6 +22,8 @@ import java.util.UUID;
 @JsonObject
 @CompiledJson
 @jodd.json.meta.JSON
+@Serdeable
+@Introspected(accessKind = Introspected.AccessKind.FIELD)
 public class Clients {
 
     @JsonField
@@ -45,6 +51,8 @@ public class Clients {
     }
 
     @JsonObject
+    @Serdeable
+    @Introspected(accessKind = Introspected.AccessKind.FIELD)
     public static final class Client {
 
         @JsonField
@@ -218,6 +226,8 @@ public class Clients {
     }
 
     @JsonObject
+    @Serdeable
+    @Introspected(accessKind = Introspected.AccessKind.FIELD)
     public static final class Partner {
 
         @JsonField

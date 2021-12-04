@@ -87,6 +87,10 @@ public abstract class JsonBench {
         return null;
     }
 
+    public Object micronaut() throws Exception {
+        return null;
+    }
+
     public Object moshi() throws Exception {
         return null;
     }

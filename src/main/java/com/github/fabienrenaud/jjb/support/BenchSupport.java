@@ -29,6 +29,7 @@ public enum BenchSupport {
         new Libapi(Library.JSONSIMPLE, Api.STREAM),
         new Libapi(Library.NANOJSON, Api.STREAM),
         new Libapi(Library.JODD, Api.DATABIND),
+        new Libapi(Library.MICRONAUT, Api.DATABIND),
         new Libapi(Library.MOSHI, Api.DATABIND, Api.STREAM),
         new Libapi(Library.TAPESTRY, Api.STREAM),
         new Libapi(Library.JSONITER, Api.DATABIND),

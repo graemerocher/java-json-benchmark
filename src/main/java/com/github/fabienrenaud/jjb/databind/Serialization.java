@@ -130,6 +130,14 @@ public class Serialization extends JsonBench {
 
     @Benchmark
     @Override
+    public Object micronaut() throws Exception {
+        ByteArrayOutputStream baos = JsonUtils.byteArrayOutputStream();
+        JSON_SOURCE().provider().micronaut().writeValue(baos, JSON_SOURCE().nextPojo());
+        return baos;
+    }
+
+    @Benchmark
+    @Override
     public Object moshi() throws Exception {
         ByteArrayOutputStream baos = JsonUtils.byteArrayOutputStream();
         BufferedSink sink = Okio.buffer(Okio.sink(baos));

@@ -1,7 +1,7 @@
 plugins {
     id 'java'
     id 'application'
-    id 'com.github.johnrengelman.shadow' version '5.2.0'
+    id "com.github.johnrengelman.shadow" version "7.1.0"
     id "com.github.ben-manes.versions" version '0.28.0'
 }
 
@@ -13,7 +13,8 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 repositories {
-    jcenter()
+    mavenCentral()
+    maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots/" }
 }
 
 ext {
@@ -81,6 +82,10 @@ dependencies {
     implementation group: 'com.eclipsesource.minimal-json', name: 'minimal-json', version: '0.9.5'
     // mjson
     implementation group: 'org.sharegov', name: 'mjson', version: '1.4.1'
+    // micronaut
+    annotationProcessor group: 'io.micronaut', name: 'micronaut-inject-java', version: '3.2.0'
+    annotationProcessor group: 'io.micronaut.serde', name: 'micronaut-serde-processor', version: '1.0.0-SNAPSHOT'
+    implementation group: 'io.micronaut.serde', name: 'micronaut-serde-jackson', version: '1.0.0-SNAPSHOT'
     // underscore-java
     implementation group: 'com.github.javadev', name: 'underscore', version: '1.71'
     //purejson 
@@ -96,6 +101,7 @@ dependencies {
 }
 
 shadowJar {
+    mergeServiceFiles()
     archiveName = 'app.jar'
     exclude 'META-INF/*.SF'
     exclude 'META-INF/*.DSA'

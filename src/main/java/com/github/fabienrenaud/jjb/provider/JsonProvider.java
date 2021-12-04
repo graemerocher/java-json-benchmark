@@ -50,5 +50,7 @@ public interface JsonProvider<T> {
 
     jodd.json.JsonSerializer joddSer();
 
+    io.micronaut.serde.ObjectMapper micronaut();
+
     com.squareup.moshi.JsonAdapter<T> moshi();
 }

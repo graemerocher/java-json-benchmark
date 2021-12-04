@@ -199,6 +199,13 @@ public abstract class JsonBenchmark<T> {
     }
 
     @Test
+    public void micronaut() throws Exception {
+        for (int i = 0; i < ITERATIONS; i++) {
+            test(Library.MICRONAUT, BENCH.micronaut());
+        }
+    }
+
+    @Test
     public void moshi() throws Exception {
         for (int i = 0; i < ITERATIONS; i++) {
             test(Library.MOSHI, BENCH.moshi());
